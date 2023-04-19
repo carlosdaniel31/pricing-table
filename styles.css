@@ -35,14 +35,12 @@ body, input, button{
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.benefit div{
-  gap: .8rem;
-}
-
-.benefit{
+  gap: 0.8rem;
   margin-bottom: .5rem;
+}
+
+.benefit span{
+  flex: 1;
 }
 
 .box{
@@ -52,10 +50,14 @@ body, input, button{
   width: 38.4rem;
   height: 38rem;
   padding: 4.8rem 2.4rem;
+  animation: appear 400ms backwards var(--delay);
 }
 
 .box:hover{
   border: 1px solid #996DFF;
+  transition: border 300ms;
+  transform: scale(1.05);
+  transition: transform 300ms;
 }
 
 .box h4{
@@ -64,6 +66,7 @@ body, input, button{
   font-size: 1.4rem;
   line-height: 2.1rem;
   margin-bottom: 0.8rem;
+  text-transform: uppercase;
 }
 
 .plan, .plan div{
@@ -110,6 +113,7 @@ button{
   font-size: 1.6rem;
   line-height: 2.4rem;
   margin-bottom: 3.2rem;
+  cursor: pointer;
 }
 
 button:hover, button:focus{
@@ -140,17 +144,20 @@ button:hover, button:focus{
   position: relative;
 }
 
-.box.ultimate h4::before{
-  content: "MAIS VANTAJOSO";
-  display: block;
+.box.ultimate::before{
+  content: "mais vantajoso";
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
   position: absolute;
-  width: max-content;
   padding: .8rem 1.6rem;
   background: #FBA94C;
   color: #0F172A;
+  text-transform: uppercase;
   border-radius: .6rem;
   top: -1.8rem;
-  left: 7.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .box.ultimate .plan{
@@ -169,6 +176,17 @@ button:hover, button:focus{
 
 .box.ultimate .benefits{
   color: #CBD5E1;
+}
+
+.box.ultimate .benefits::before{
+  background: #334155;
+}
+
+@keyframes appear{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
 }
 
 @media(min-width: 900px){
